@@ -14,11 +14,15 @@
 use Illuminate\Support\Facades\Route;
 
 // home page of the website
-Route::get('/', [
-    "as" => "home",
-    "uses" => function () {
-    return view('home.index');
-}]);
+//Route::get('/', [
+//    "as" => "home",
+//    "uses" => function () {
+//    return view('home.index');
+//}]);
+
+Route::get("/", function() {
+    return view("welcome");
+});
 
 
 /**************** blog section of the website ********************/
