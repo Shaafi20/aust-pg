@@ -37,14 +37,16 @@
             <div class="login navbar-right">
                 <ul class="navbar-nav">
                     <li @if(isset($title) && $title == "login") {{$active}} @endif>
-                        <a href="login.html">
+                        {{--todo change the login link--}}
+                        <a href="{{route('home')}}">
                             <span class="glyphicon glyphicon-lock"></span>
                             Login
 
                         </a>
                     </li>
                     <li @if(isset($title) && $title == "registration") {{$active}} @endif>
-                        <a href="registration.html">
+                        {{--todo change the registration link--}}
+                        <a href="{{route('home')}}">
                             <span class="glyphicon glyphicon-user"></span>
                             Register</a>
                     </li>
