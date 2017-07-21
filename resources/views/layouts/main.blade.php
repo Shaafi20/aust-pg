@@ -18,7 +18,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset("css/app.css")}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset("css/style.css")}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset("css/footer.css")}}"/>
-    <title>Home</title>
+    <title>
+        @if(isset($title))
+            {{ucfirst($title)}} | AUST Programming Group
+        @else
+            AUST Programming Group
+        @endif
+    </title>
 </head>
 
 <body>

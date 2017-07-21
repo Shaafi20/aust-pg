@@ -22,28 +22,28 @@
                 <li @if(isset($title) && $title == "forum") {{$active}} @endif>
                     <a href="{{route("forum")}}">Forum</a>
                 </li>
-                <li>
-                    <a href="upComingContest.html">Contests</a>
+                <li @if(isset($title) && $title == "contest") {{$active}} @endif>
+                    <a href="{{route("contests")}}">Contests</a>
                 </li>
-                <li>
-                    <a href="upComingEvents.html">Upcoming Events</a>
+                <li @if(isset($title) && $title == "upcomingEvent") {{$active}} @endif>
+                    <a href="{{route("upcomingEvents")}}">Upcoming Events</a>
                 </li>
-                <li>
-                    <a href="rankList.html">Rank List</a>
+                <li @if(isset($title) && $title == "rank") {{$active}} @endif>
+                    <a href="{{route("rank")}}">Rank List</a>
                 </li>
             </ul>
 
 
             <div class="login navbar-right">
                 <ul class="navbar-nav">
-                    <li>
+                    <li @if(isset($title) && $title == "login") {{$active}} @endif>
                         <a href="login.html">
                             <span class="glyphicon glyphicon-lock"></span>
                             Login
 
                         </a>
                     </li>
-                    <li>
+                    <li @if(isset($title) && $title == "registration") {{$active}} @endif>
                         <a href="registration.html">
                             <span class="glyphicon glyphicon-user"></span>
                             Register</a>
