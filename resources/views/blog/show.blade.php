@@ -9,217 +9,149 @@
 
 
                 <article>
-                    <h2><a href="#singlepost.html">"হ্যালো ওয়ার্ল্ড - প্রথম প্রোগ্রাম"</a></h2>
+                    <h2><a href="{{route("blog.show", ['blog' => $blog->id])}}">
+                            {{$blog->title}}
+                        </a></h2>
 
                     <div class="row">
                         <div class="group1 col-sm-6 col-md-6">
-                            <span class="glyphicon glyphicon-folder-open"></span> <a href="#">সিফাত আহমেদ</a>
-                            <span class="glyphicon glyphicon-bookmark"></span> <a href="#">সি</a>,
-                            <a href="#">সি++</a>, <a href="#">প্রোগ্রামিং</a>
+                            {{--author name--}}
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span></span>
+                            <a href="{{route('user')}}?name={{$blog->user->name}}">
+                                {{$blog->user->name}}
+                            </a>
+                            <span></span>
+
+                            {{--post tags/catagory--}}
+                            <span class="glyphicon glyphicon-bookmark"></span>
+
+                            <a href="#">{{$blog->post_keywords}}</a>
+
                         </div>
                         <div class="group2 col-sm-6 col-md-6">
-                            <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">20
-                                Comments</a>
-                            <span class="glyphicon glyphicon-time"></span> March 28, 2017 11:00 PM
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <a href="#comments">
+                                {{count($comments)}} comment(s)
+                            </a>
+
+                            {{--blog creation date--}}
+                            <span class="glyphicon glyphicon-time"></span>
+                            {{$blog->created_at->formatLocalized('%A, %d %B, %Y')}}
                         </div>
                     </div>
 
                     <hr>
                     <br/>
 
-                    <p class="lead">"হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি সাধারণত শিক্ষানবিশদেরকে কোন নতুন প্রোগ্রামিং ভাষা
-                        পরিচয় করিয়ে দেয়ার জন্য ব্যাবহার করা হয়। কোন শিক্ষকের সহায়তায় এই প্রোগ্রামটি অনেক সহজেই
-                        বুঝা
-                        যায়।
-
-                        এছাড়াও কম্পিউটারের কম্পাইলার এবং একটি প্রোগ্রামিং ভাষা নিয়ে কাজ করার জন্য কম্পিউটারটির সবকিছু
-                        ঠিকঠাকমত কাজ করছে কিনা সেটা জানার জন্যেও "হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি ব্যাবহার করা হয়। কোন
-                        একটি
-                        কম্পিউটারে নতুন একটি প্রোগ্রামিং ভাষার জটিল জটিল প্রোগ্রামগুলো ঠিকমত কাজ করতে পারবে কিনা সেটা
-                        জানার
-                        জন্যেও এটি ব্যাবহৃত হয়। এই কারণেই কোন নতুন টুল চেইন পরীক্ষা করার জন্য এই সহজ প্রোগ্রামটি
-                        ব্যাবহার
-                        করা হয়।
-
-                        এছাড়াও কম্পিউটারের কম্পাইলার এবং একটি প্রোগ্রামিং ভাষা নিয়ে কাজ করার জন্য কম্পিউটারটির সবকিছু
-                        ঠিকঠাকমত কাজ করছে কিনা সেটা জানার জন্যেও "হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি ব্যাবহার করা হয়। কোন
-                        একটি
-                        কম্পিউটারে নতুন একটি প্রোগ্রামিং ভাষার জটিল জটিল প্রোগ্রামগুলো ঠিকমত কাজ করতে পারবে কিনা সেটা
-                        জানার
-                        জন্যেও এটি ব্যাবহৃত হয়। এই কারণেই কোন নতুন টুল চেইন পরীক্ষা করার জন্য এই সহজ প্রোগ্রামটি
-                        ব্যাবহার
-                        করা হয়।
-
-                        এছাড়াও কম্পিউটারের কম্পাইলার এবং একটি প্রোগ্রামিং ভাষা নিয়ে কাজ করার জন্য কম্পিউটারটির সবকিছু
-                        ঠিকঠাকমত কাজ করছে কিনা সেটা জানার জন্যেও "হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি ব্যাবহার করা হয়। কোন
-                        একটি
-                        কম্পিউটারে নতুন একটি প্রোগ্রামিং ভাষার জটিল জটিল প্রোগ্রামগুলো ঠিকমত কাজ করতে পারবে কিনা সেটা
-                        জানার
-                        জন্যেও এটি ব্যাবহৃত হয়। এই কারণেই কোন নতুন টুল চেইন পরীক্ষা করার জন্য এই সহজ প্রোগ্রামটি
-                        ব্যাবহার
-                        করা হয়।
-
-                        এছাড়াও কম্পিউটারের কম্পাইলার এবং একটি প্রোগ্রামিং ভাষা নিয়ে কাজ করার জন্য কম্পিউটারটির সবকিছু
-                        ঠিকঠাকমত কাজ করছে কিনা সেটা জানার জন্যেও "হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি ব্যাবহার করা হয়। কোন
-                        একটি
-                        কম্পিউটারে নতুন একটি প্রোগ্রামিং ভাষার জটিল জটিল প্রোগ্রামগুলো ঠিকমত কাজ করতে পারবে কিনা সেটা
-                        জানার
-                        জন্যেও এটি ব্যাবহৃত হয়। এই কারণেই কোন নতুন টুল চেইন পরীক্ষা করার জন্য এই সহজ প্রোগ্রামটি
-                        ব্যাবহার
-                        করা হয়।
-
-
+                    <p class="lead">
+                        {!! $blog->body !!}
                     </p>
 
 
-                    <hr>
+                    <hr style="background: black; height: 1px;"/>
                 </article>
 
                 <!-- comment section starts -->
-                <div id="comments" class="comments-area col-md-8">
+                {{--comment section--}}
+                <div id="comments" class="comments-area ">
 
                     <h4 class="comments-title">
-                        12 thoughts on &ldquo;<span>হ্যালো ওয়ার্ল্ড - প্রথম প্রোগ্রাম</span>&rdquo;
+
+                        {{count($comments)}} thought(s) on &ldquo;<span>{{$blog->title}}</span>&rdquo;
+
                     </h4>
 
-                    <ol class="comment-list">
-                        <li id="comment-1" class="comment even thread-even depth-1">
-                            <article id="div-comment-1" class="comment-body">
-                                <div class="comment-author vcard">
-                                    <img alt=''
-                                         src='https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png'
-                                         srcset='https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png 2x'
-                                         class='avatar avatar-32 photo' height='32' width='32'/> <b class="fn">Sayef</b>
-                                    <span class="says">says:</span></div><!-- .comment-author -->
-                                <!-- profile photo for the user -->
-                                <div class="comment-metadata">
+                    <hr style="background: black; height: 1px;"/>
 
-                                    <time datetime="২০১২-০৪-৩০T১৫:০৭:১০+০০:০০">
-                                        এপ্রিল ৩০, ২০১২ at ৩:০৭ pm
-                                    </time>
-                                    </a>
-                                </div><!-- .comment-metadata -->
+                    <ol class="comment-list" style="margin-left: 25px;">
 
-                                <div class="comment-content">
-                                    <p>What will be the solution?</p>
-                                </div><!-- .comment-content -->
+                        @foreach($comments as $comment)
 
-                                <div class="reply"><a rel='nofollow' class='comment-reply-link'
-                                                      aria-label='Reply to Sayef'>Reply</a>
-                                </div>
-                            </article><!-- .comment-body -->
-                        </li><!-- #comment-## -->
+                            <li id="comment" class="comment even thread-even depth-1">
+                                <article id="div-comment" class="comment-body">
+                                    <div class="comment-author vcard">
+                                        <img alt=''
+                                             src='https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png'
+                                             srcset='https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png 2x'
+                                             class='avatar avatar-32 photo' height='32' width='32'/> <b class="fn">
 
-                        <hr style="height: 2px; background: cornflowerblue"/>
+                                            {{$comment->user->name}}
 
-                        <li id="comment-2" class="comment even thread-even depth-1 parent">
-                            <article id="div-comment-2" class="comment-body">
-                                <div class="comment-author vcard">
-                                    <img alt=''
-                                         src='https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png'
-                                         srcset='https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png 2x'
-                                         class='avatar avatar-32 photo' height='32' width='32'/> <b class="fn">Sifat</b>
-                                    <span class="says">says:</span></div><!-- .comment-author -->
+                                        </b>
+                                        <span class="says">
 
-                                <div class="comment-metadata">
+                                            said on
+                                            {{$blog->created_at->toFormattedDateString()}} :
 
-                                    <time datetime="২০১৩-০৪-২৮T১২:১৭:৪৫+০০:০০">
-                                        এপ্রিল ২৮, ২০১৩ at ১২:১৭ pm
-                                    </time>
-                                    </a>
-                                </div><!-- .comment-metadata -->
+                            </span>
+                                    </div><!-- .comment-author -->
 
+                                    <div class="comment-content">
+                                        <p>
 
-                                <div class="comment-content">
-                                    <p>There are some problems in the link of problems (need to solve)</p>
-                                </div><!-- .comment-content -->
+                                            {{$comment->comment_text}}
 
-                                <div class="reply"><a rel='nofollow' class='comment-reply-link'
-                                                      aria-label='Reply to Sifat'>Reply</a>
-                                </div>
-                            </article><!-- .comment-body -->
-                            <ol class="children">
-                                <li id="comment-2-1"
-                                    class="comment byuser comment-author-Shafaet_amarsite bypostauthor odd alt depth-2">
-                                    <article id="div-comment-2-1" class="comment-body">
-                                        <div class="comment-author vcard">
-                                            <img alt=""
-                                                 src="https://cdn4.iconfinder.com/data/icons/fashion-icons/154/hipster-512.png"
-                                                 class="avatar avatar-social-login avatar-32 photo" height="32"
-                                                 width="32"/>
-                                            <b class="fn">Shaafi</b> <span class="says">says:</span></div>
-                                        <!-- .comment-author -->
+                                        </p>
+                                    </div><!-- .comment-content -->
 
-                                        <div class="comment-metadata">
+                                    <div class="reply"><a rel='nofollow' class='comment-reply-link' aria-label='Reply to Sayef'>Reply</a>
+                                    </div>
+                                </article><!-- .comment-body -->
+                            </li><!-- #comment-## -->
 
-                                            <time datetime="২০১৩-০৪-২৮T১৪:৪১:০৬+০০:০০">
-                                                এপ্রিল ২৮, ২০১৩ at ২:৪১ pm
-                                            </time>
-                                            </a>
-                                        </div><!-- .comment-metadata -->
+                            <hr style="height: 2px; background: cornflowerblue"/>
 
-                                        <div class="comment-content">
-                                            <p>Fixed, thanks.</p>
-                                        </div><!-- .comment-content -->
-
-                                        <div class="reply"><a rel='nofollow' class='comment-reply-link'
-                                                              aria-label='Reply to Shaafi'>Reply</a></div>
-                                    </article><!-- .comment-body -->
-                                </li><!-- #comment-## -->
-                            </ol><!-- .children -->
-                        </li><!-- #comment-## -->
-
-                        <hr style="height: 2px; background: cornflowerblue"/>
+                        @endforeach
 
                     </ol>
-                    <!-- .comment-list -->
 
-                    <div id="respond" class="comment-respond">
-                        <h3 id="reply-title" class="comment-reply-title">Leave a Reply
+                    {{--comment adding form--}}
+                    <div class="col-lg-9">
+                        <div id="respond" class="comment-respond card-block">
 
-                        </h3>
-                        <form action="http://www.austprogramminggroup.com/comments-post.php"
-                              method="post" id="commentform" class="comment-form" novalidate>
+                            <h3 id="reply-title" class="comment-reply-title">
 
-                            <p class="comment-notes"><span
-                                        id="email-notes">Your email address will not be published.</span>
-                                Required fields are marked <span class="required">*</span></p>
-                            <p class="comment-form-comment"><label for="comment">Comment</label> <textarea
-                                        id="comment" name="comment" cols="45" rows="8" maxlength="65525"
-                                        aria-required="true" required></textarea></p>
-                            <p class="comment-form-author"><label for="author">Name <span
-                                            class="required">*</span></label> <input id="author" name="author"
-                                                                                     type="text" value="" size="30"
-                                                                                     maxlength="245"
-                                                                                     aria-required='true'
-                                                                                     required='required'/></p>
-                            <p class="comment-form-email"><label for="email">Email <span
-                                            class="required">*</span></label> <input id="email" name="email"
-                                                                                     type="email" value="" size="30"
-                                                                                     maxlength="100"
-                                                                                     aria-describedby="email-notes"
-                                                                                     aria-required='true'
-                                                                                     required='required'/></p>
-                            <p class="comment-form-url"><label for="url">Website</label> <input id="url"
-                                                                                                name="url"
-                                                                                                type="url"
-                                                                                                value=""
-                                                                                                size="30"
-                                                                                                maxlength="200"/>
-                            </p>
+                                Leave a Reply
 
-                            <p class="form-submit"><input name="submit" type="submit" id="submit"
-                                                          class="submit" value="Post Comment"/> <input
-                                        type='hidden' name='comment_post_ID' value='3060' id='comment_post_ID'/>
-                                <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
-                            </p>
-                            <p style="display: none;"><input type="hidden" id="akismet_comment_nonce"
-                                                             name="akismet_comment_nonce"
-                                                             value="f044d07193"/></p>
+                            </h3>
 
-                            <p style="display: none;"><input type="hidden" id="ak_js" name="ak_js"
-                                                             value="16"/></p></form>
-                    </div><!-- #respond -->
+                        </div>
+
+                        <div class="card-block" style="margin-top: -160px;">
+
+                            <form method="post" action="{{$blog->id}}/comment">
+
+                                {{csrf_field()}}
+
+                                <div class="form-group">
+
+                        <textarea name="body" id="body"
+
+                                  @if(!auth()->check())
+
+                                  placeholder="Please Login to Give Reply"
+
+                                  @else
+
+                                  placeholder="Your Comments Here"
+
+                                  @endif
+
+                                  class="form-control comment-form" required
+
+                                  @if(!auth()->check()) disabled @endif ></textarea>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" @if(!auth()->check()) disabled @endif >Add
+                                        Comment
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <!-- comments section end -->
 

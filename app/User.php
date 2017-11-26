@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
 
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', "student_id", "phone",
     ];
 
     /**
@@ -26,4 +26,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    // making relationship with blog
+    public function blog()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    // getting user details
+    public function scopeUser($query, $user) {
+        return $query->where('name', $user)->get();
+    }
 }

@@ -4,7 +4,7 @@
 {{--adding the main body segment of the page here--}}
 <!-- Main Content Body starts from here -->
 @section("container")
-    <div id="mainBody" class="container-fluid" style="width:100%">
+    <div id="mainBody" class="container-fluid">
         <div class="row">
 
             <!--MIDDLE SIDEBAR STARTS FROM HERE -->
@@ -83,14 +83,24 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <a href="#" class="pull-right">See All</a>
+                                <a href="{{route('upcomingEvents.index')}}" class="pull-right">See All</a>
                                 <h4>Events</h4>
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="well well-sm">
-                                <a href="#">Intra AUST Programming Contest Spring 2017</a>
-                            </div>
+
+                            @php
+                                $eventObj = new \App\Event;
+                                $events = $eventObj->topEvents();
+
+
+                            foreach($events as $event){
+
+                            echo '<div class="well well-sm">';
+                                echo "<a href=" .route('upcomingEvents.index') .">" . $event->event_title . "</a></div>";
+}
+
+                            @endphp
                             <div class="well well-sm">
                                 <a href="#">Practice Class for 1.1</a>
                             </div>
@@ -163,22 +173,44 @@
                             </h4>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form role="form" method="POST" action="{{ route('login') }}">
+                                {{ csrf_field() }}
                                 <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email">
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+
+                                        <input id="email" placeholder="E-mail" type="email" class="form-control"
+                                               name="email" value="{{ old('email') }}" required>
+
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                                        <input id="password" placeholder="Password" type="password" class="form-control"
+                                               name="password" required>
+
+                                        @if ($errors->has('password'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password"
-                                               type="password" value="">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> Remember
+                                                Me
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                        </label>
-                                    </div>
-                                    <!-- Change this to a button or input when using this as a form -->
-                                    <a href="javascript:" class="btn btn-sm btn-success">Login</a>
+                                    <button type="submit" class="btn btn-success">
+                                        Login
+                                    </button>
+
                                 </fieldset>
                             </form>
                         </div>

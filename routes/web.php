@@ -11,33 +11,37 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use TCG\Voyager\Facades\Voyager;
 
 // home page of the website
-Route::get('/', [
-    "as" => "home",
-    "uses" => function () {
+Route::get('/', function () {
         return view('home.index');
-    }]);
+    })->name("home");
+
+Route::get('/home', function () {
+        return redirect()->route('home');
+    });
 
 
 /**************** blog section of the website ********************/
 
 // blog home page
-Route::get('/blogs', [
-    "as" => "blog",
-    "uses" => function () {
-        $title = "blog";
-        return view('blog.index', compact("title"));
-    }]);
+Route::resource('blog', 'BlogController');
+Route::post('blog/{blog}/comment', 'BlogController@update');
 
-// blog show page
-Route::get("/blog/{blogId}", [
-    "as" => "blogShow",
-    function () {
-        $title = "blog";
-        return view("blog.show", compact("blogId", "title"));
-    }]);
+//Route::get('/blogs', [
+//    "as" => "blog",
+//    "uses" => 'BlogController@index']);
+//
+//// blog show page
+//Route::get("/blog/{blogId}", [
+//    "as" => "blogShow",
+//    function () {
+//        $title = "blog";
+//        return view("blog.show", compact( "title"));
+//    }]);
 
 /**************** forum section of the website ********************/
 
@@ -51,13 +55,16 @@ Route::get('/forum', [
 
 /**************** contest section of the website ********************/
 
+// full contest controller
+Route::resource('contests', 'ContestController');
+
 // contest home page
-Route::get('/contests', [
-    "as" => "contests",
-    function () {
-        $title = "contest";
-        return view('contests.index')->withTitle($title);
-    }]);
+//Route::get('/contests', [
+//    "as" => "contests",
+//    function () {
+//        $title = "contest";
+//        return view('contests.index')->withTitle($title);
+//    }]);
 
 // single contest details showing page
 Route::get("/contests/{id}", [
@@ -78,20 +85,42 @@ Route::get("/contests/{contestId}/{problemId}", [
 
 /**************** upcoming events section of the website ********************/
 
+// full events controller
+Route::resource('upcomingEvents', 'EventController');
+
+
+// adding users choice and the event
+Route::post('upcomingEvents/add/{event}', 'EventController@add')->name('event_add_user');
+
 // events home page
-Route::get('/upcomingEvents', [
-    "as" => "upcomingEvents",
-    function () {
-        $title = "upcomingEvent";
-        return view('upcomingEvents.index', compact("title"));
-    }]);
+//Route::get('/upcomingEvents', [
+//    "as" => "upcomingEvents",
+//    function () {
+//        $title = "upcomingEvent";
+//        return view('upcomingEvents.index', compact("title"));
+//    }]);
 
 /**************** rank list section of the website ********************/
 
+// full rank controller
+Route::resource('rank', 'RankController');
+
 // rank home page
-Route::get('/rank', [
-    "as" => "rank",
-    function () {
-        $title = "rank";
-        return view('rank.index', compact('title'));
-    }]);
+//Route::get('/rank', [
+//    "as" => "rank",
+//    function () {
+//        $title = "rank";
+//        return view('rank.index', compact('title'));
+//    }]);
+
+Auth::routes();
+
+/************** user ****************/
+// user's profile page
+Route::get('user', 'UserController@show')->name('user');
+
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

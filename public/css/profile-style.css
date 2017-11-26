@@ -136,13 +136,14 @@
     padding: 10px;
 }
 
-#profile-dropdown a:hover {
-    color: #000000;
+#profile-dropdown li a {
+    color: #fff;
 }
 
 #profile_item a:hover {
     text-decoration: none;
     font-weight: bold;
+    text-underline-mode: none;
 }
 
 /* top row's columns center */

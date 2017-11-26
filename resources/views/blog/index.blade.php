@@ -8,58 +8,83 @@
     <div id="mainBody" class="container">
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-8" style="margin-top: 20px;">
 
                 <h1 style="display:inline-block;"><u>Latest Posts</u></h1>
 
-                <ol class="breadcrumb pull-right where-am-i">
-                    <li><a href="#">Add New Topic</a></li>
+                <a href="{{route('blog.create')}}" >
+                <ol class="breadcrumb pull-right btn-primary" id="add_blog">
+                    <li>Add New Topic</li>
                 </ol>
+                </a>
+
                 <div class="clearfix"></div>
 
-                <article>
-                    <h2><a href="{{route("blogShow", ['blogId' => 1])}}">
-                            "হ্যালো ওয়ার্ল্ড - প্রথম প্রোগ্রাম"
-                        </a></h2>
+                {{--createing a foreach loop to display all the blogs one by one--}}
+                @foreach($posts as $post)
 
-                    <div class="row">
-                        <div class="group1 col-sm-6 col-md-6">
-                            <span class="glyphicon glyphicon-folder-open"></span> <a href="#">সিফাত আহমেদ</a>
-                            <span class="glyphicon glyphicon-bookmark"></span> <a href="#">সি</a>,
-                            <a href="#">সি++</a>, <a href="#">প্রোগ্রামিং</a>
+                    <article>
+                        <h2><a href="{{route("blog.show", ['slug' => $post->slug])}}">
+                                {{$post->title}}
+                            </a>
+                        </h2>
+
+                        <div class="row">
+                            <div class="group1 col-sm-6 col-md-6">
+
+                                {{--author name--}}
+                                <span class="glyphicon glyphicon-user"></span>
+                                    <span></span>
+                                <a href="{{route('user')}}?name={{$post->user->name}}">
+                                    {{$post->user->name}}
+                                </a>
+                                <span></span>
+
+                                {{--post tags/catagory--}}
+                                <span class="glyphicon glyphicon-bookmark"></span>
+
+                                    <a href="#">{{$post->post_keywords}}</a>
+
+                            </div>
+                            <div class="group2 col-sm-6 col-md-6">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <a href="{{route("blog.show", ['blog' => $post->id])}}#comments">
+                                    {{count($post->comments)}} comment(s)
+                                </a>
+
+                                {{--blog creation date--}}
+                                <span class="glyphicon glyphicon-time"></span>
+                                {{$post->created_at->formatLocalized('%A, %d %B, %Y')}}
+                            </div>
                         </div>
-                        <div class="group2 col-sm-6 col-md-6">
-                            <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">20
-                                Comments</a>
-                            <span class="glyphicon glyphicon-time"></span> March 28, 2017 11:00 PM
-                        </div>
-                    </div>
 
-                    <hr>
-                    <br/>
+                        <hr>
+                        <br/>
 
-                    <p class="lead">"হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি সাধারণত শিক্ষানবিশদেরকে কোন নতুন প্রোগ্রামিং ভাষা
-                        পরিচয় করিয়ে দেয়ার জন্য ব্যাবহার করা হয়। কোন শিক্ষকের সহায়তায় এই প্রোগ্রামটি অনেক সহজেই
-                        বুঝা
-                        যায়।
+                        <p class="lead">
+                            @php
 
-                        এছাড়াও কম্পিউটারের কম্পাইলার এবং একটি প্রোগ্রামিং ভাষা নিয়ে কাজ করার জন্য কম্পিউটারটির সবকিছু
-                        ঠিকঠাকমত কাজ করছে কিনা সেটা জানার জন্যেও "হ্যালো, ওয়ার্ল্ড!" প্রোগ্রামটি ব্যাবহার করা হয়। কোন
-                        একটি
-                        কম্পিউটারে নতুন একটি প্রোগ্রামিং ভাষার জটিল জটিল প্রোগ্রামগুলো ঠিকমত কাজ করতে পারবে কিনা সেটা
-                        জানার
-                        জন্যেও এটি ব্যাবহৃত হয়। এই কারণেই কোন নতুন টুল চেইন পরীক্ষা করার জন্য এই সহজ প্রোগ্রামটি
-                        ব্যাবহার
-                        করা হয়।</p>
+                                $body = $post->body;
 
-                    <p class="text-right">
-                        <a href="postpage.html" class="text-right">
-                            continue reading...
-                        </a>
-                    </p>
+                                if (strlen($body) > 700) {
+                                    $body = substr($body, 0, 700) . "...\n\n";
 
-                    <hr>
-                </article>
+                                    $body .= '<b><a href="' . route("blog.show", ['blog' => $post->id]);
+                                    $body .= '" class="text-right">{continue reading}</a></b>';
+                                }
+
+                                echo $body;
+
+                            @endphp
+
+                        </p>
+
+                        <hr>
+                    </article>
+
+                @endforeach
+
+                {{ $posts->links("layouts.pagination") }}
 
             </div>
             <div class="col-md-4">

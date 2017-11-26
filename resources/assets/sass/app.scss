@@ -2,11 +2,18 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Bootstrap select
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css");
+
 
 // Our Custom Stylesheet
+@import "public/css/style";
+
+@import "public/css/footer";
