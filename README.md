@@ -1,4 +1,4 @@
-********************************** PROJECT DETAILS **********************************
+## PROJECT DETAILS
 
 Project Name: AUST Programming group Website
 
@@ -20,7 +20,7 @@ The website also has a online judge system, where any user can practise code. Co
                   3. Name: Sifat Ahmed,        ID: 15.01.04.144
 
 
- ******************************** PROJECT REQUIREMENTS *******************************
+## PROJECT REQUIREMENTS
  Software Requirements for running the project:
         WAMP/XAMP (for MySql database and PHP),
         Composer (for Laravel, not fully required, but for safe side it's good to have it installed)
@@ -28,22 +28,22 @@ The website also has a online judge system, where any user can practise code. Co
 
  Software Requirements for editing/viewing the code:
         any code editor can be used.
-        ## Recommended: JetBrains PhpStorm, Visual Studio Code ##
+        ### **Recommended: JetBrains PhpStorm, Visual Studio Code **
 
 
- ******************************** RUNNING WEBSITE **************************************
+ ## RUNNING WEBSITE
 
  for running the project below steps are required:
 
-    ## make sure that WAMP/XAMP is running and you can access MySql database ##
+    ** make sure that WAMP/XAMP is running and you can access MySql database **
 
-    ## SET UP THE PROJECT ##
+    ### SET UP THE PROJECT
 
     1. create a database in mysql database
     2. go to .env file in the project folder and change the DB_DATABASE,DB_USERNAME and DB_PASSWORD according to your configuration
         here DB_DATABASE will be the database name you just created
 
-    ## Running the website ##
+    ### Running the website
 
     1.Open 'command prompt' or 'windows powerShell' start menu or from windows run
 
@@ -60,10 +60,10 @@ The website also has a online judge system, where any user can practise code. Co
 
     6.You are now in the website.
 
-    ## To post any blog you need to register your self first ##
+    ** _To post any blog you need to register your self first_ **
 
 
- *********************************** LIMITATIONS ******************************************
+ ### LIMITATIONS
   1. Rigth now only Blog page, Events page and login user, registration of user is working with php and database.
         That is they are dynamic in the website. Other pages are still static.
 
